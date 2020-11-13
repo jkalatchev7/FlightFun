@@ -27,15 +27,19 @@ function submitForm() {
     let dat = date.value;
     console.log(tex);
     document.getElementById("firstBox").style.display = "block";
-    appendPre(tex, dat);
+    document.getElementById("firstBox").innerText = ("Showing flights departing " + tex + " on " + dat + "\n");
+    let listCodes = ["SFO", "FLL"];
+    let j = listCodes.length - 1;
+    while (j >= 0) {
+        appendPre(listCodes[j], dat);
+        j--;
+    }
 }
 
 function appendPre(message, date) {
     let d = document.createElement('div');
     d.setAttribute("class", "entry");
-    let t = document.createTextNode("We found flights to " + message + " on " + date + "\n");
-    //document.getElementById("firstBox").setAttribute("textContent", ("Showing flights departing: " + message));
-    //blah
+    let t = document.createTextNode("We found flights to: " + message + " on " + date + "\n");
     d.appendChild(t);
     document.body.appendChild(d);
 
