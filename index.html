@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flight Fun</title>
+    <link rel="stylesheet" href="formatting.css">
+</head>
+
+
+<body>
+
+<h1 class="into">Flight Fun</h1>
+<p>A new way to find flights: Miles per dollar</p>
+
+<label for="origin">Origin: </label>
+<input type="text" id="origin" name="origin" value="Boston"><br>
+<button id="search" onclick="submitForm()">Search</button>
+<button id="clear" onclick="clearText()"> Clear </button>
+
+<p id="firstBox" style="display: none">Showing flights departing: </p>
+
+<pre id="content" style="white-space: pre-wrap;"></pre>
+
+<script src='script.js' defer></script>
+
+</body>
+</html>
