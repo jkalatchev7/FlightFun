@@ -1,6 +1,7 @@
 
 //var searchButton = document.getElementById('destination');
-var text = document.getElementById('origin');
+let text = document.getElementById('origin');
+
 function submitForm() {
     let tex = text.value;
     console.log(tex);
@@ -9,9 +10,10 @@ function submitForm() {
 }
 
 function appendPre(message) {
-    var d = document.createElement('div');
+    let d = document.createElement('div');
     d.setAttribute("class", "entry");
-    var t = document.createTextNode("We found flights to: " + message +"\n");
+    let t = document.createTextNode("We found flights to: " + message + "\n");
+    //document.getElementById("firstBox").setAttribute("textContent", ("Showing flights departing: " + message));
     d.appendChild(t);
     document.body.appendChild(d);
 
@@ -22,6 +24,5 @@ function clearText() {
     while (hol.length != 0) {
         hol[0].remove();
     }
-    
     document.getElementById("firstBox").style.display = "none";
 }

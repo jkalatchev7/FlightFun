@@ -13,13 +13,16 @@
 <p>A new way to find flights: Miles per dollar</p>
 
 <label for="origin">Origin: </label>
-<input type="text" id="origin" name="origin" value="Boston"><br>
+<input type="text" id="origin" value="Boston"><br>
+<label for="date">Date: </label>
+<input type="date" id="date" value="2020-12-12"><br>
+
+
+
 <button id="search" onclick="submitForm()">Search</button>
 <button id="clear" onclick="clearText()"> Clear </button>
 
 <p id="firstBox" style="display: none">Showing flights departing: </p>
-
-<pre id="content" style="white-space: pre-wrap;"></pre>
 
 <script src='script.js' defer></script>
 
