@@ -6,6 +6,6 @@ The entire application will be built with HTML, CSS, Javascript, etc.. API calls
 
 To test application in terminal:
    Navigate to "FlightFun" directory
-   Run "python -m http.server 5000"
+   Run "python -m SimpleHTTPServer 5000"
    Open web browser and type in "http://localhost:5000"
 
