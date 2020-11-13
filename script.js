@@ -1,24 +1,23 @@
-import axios from "axios";
+//import axios from "axios";
 
 //var searchButton = document.getElementById('destination');
 let text = document.getElementById('origin');
 let date = document.getElementById('date');
 
 function getData(origin, code, date) {
-    const options = {
-  method: 'GET',
-  url: ('https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/referral/v1.0/US/USD/en-US/%s-sky/%s-sky/%s', origin, code, date),
-  params: {shortapikey: 'ra66933236979928', apiKey: '{shortapikey}'},
-  headers: {
-    'x-rapidapi-key': 'SIGN-UP-FOR-KEY',
-    'x-rapidapi-host': 'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com'
-  }
-};
-
-axios.request(options).then(function (response) {
-	console.log(response.data);
-}).catch(function (error) {
-	console.error(error);
+    const url = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browseroutes/v1.0/US/USD/en-US/" + origin + "-sky/" + code + "-sky/" + date;
+fetch(url, {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "8334b1be82msh6b0193ec25e329ap1d5320jsnbe501d429b64",
+		"x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com"
+	}
+})
+.then(response => {
+	console.log(response.json());
+})
+.catch(err => {
+	console.error(err);
 });
 }
 
@@ -31,6 +30,7 @@ function submitForm() {
     let listCodes = ["SFO", "FLL"];
     let j = listCodes.length - 1;
     while (j >= 0) {
+        getData(tex, listCodes[j], dat);
         appendPre(listCodes[j], dat);
         j--;
     }
