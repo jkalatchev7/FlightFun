@@ -39,7 +39,8 @@ function submitForm() {
 function appendPre(message, date) {
     let d = document.createElement('div');
     d.setAttribute("class", "entry");
-    let t = document.createTextNode("We found flights to: " + message + " on " + date + "\n");
+    let num = .056;
+    let t = document.createTextNode(message + " $100" + " Only " + num + " dollars per mile!\n");
     d.appendChild(t);
     document.body.appendChild(d);
 
