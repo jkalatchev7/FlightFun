@@ -3,26 +3,22 @@
 //var searchButton = document.getElementById('destination');
 let text = document.getElementById('origin');
 let date = document.getElementById('date');
+let arr;
 
 function getData(origin, code, date) {
     const url = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browseroutes/v1.0/US/USD/en-US/" + origin + "-sky/" + code + "-sky/" + date;
-const settings = {
-	"async": true,
-	"crossDomain": true,
-	"url": url,
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "8334b1be82msh6b0193ec25e329ap1d5320jsnbe501d429b64",
-		"x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com"
-	}
-};
-let arr;
-$.ajax(settings).done(function (response) {
-	//return response;
-    //return [response["Quotes"][0]]
-    arr = [response["Quotes"][0]["MinPrice"], response["Quotes"][0]["Direct"], response["Carriers"][0]["Name"]];
-	//console.log()
-});
+const data = null;
+
+const xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.open("GET", url, false);
+xhr.setRequestHeader("x-rapidapi-key", "8334b1be82msh6b0193ec25e329ap1d5320jsnbe501d429b64");
+xhr.setRequestHeader("x-rapidapi-host", "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com");
+
+xhr.send(data);
+let response = JSON.parse(xhr.responseText);
+arr = [response["Quotes"][0]["MinPrice"], response["Quotes"][0]["Direct"], response["Carriers"][0]["Name"]];
 return arr;
 }
 
@@ -36,7 +32,6 @@ function submitForm() {
     let j = listCodes.length - 1;
     while (j >= 0) {
         let data = getData(tex, listCodes[j], dat);
-        //let data = getData(tex, listCodes[j], dat);
         console.log(data);
         appendPre(listCodes[j], dat);
         j--;
