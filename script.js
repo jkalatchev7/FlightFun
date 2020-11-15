@@ -12,21 +12,21 @@ const data = null;
 const xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
-xhr.open("GET", url, false);
+xhr.addEventListener("readystatechange", function () {
+	if (this.readyState === this.DONE) {
+	    let response = JSON.parse(this.response);
+	    arr = [response["Quotes"][0]["MinPrice"], response["Quotes"][0]["Direct"], response["Carriers"][0]["Name"]];
+		console.log(this.responseText);
+		appendPre(code, date, arr[0], arr[1], arr[2]);
+	}
+});
+
+xhr.open("GET", url);
 xhr.setRequestHeader("x-rapidapi-key", "8334b1be82msh6b0193ec25e329ap1d5320jsnbe501d429b64");
 xhr.setRequestHeader("x-rapidapi-host", "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com");
 
 xhr.send(data);
-var check = setTimeout( function() {alert("Timeout")}, 2000);
-while (xhr.readyState !== 4) {
-}
-clearTimeout(check);
 
-let response = JSON.parse(xhr.responseText);
-console.log(response);
-arr = [response["Quotes"][0]["MinPrice"], response["Quotes"][0]["Direct"], response["Carriers"][0]["Name"]];
-
-return arr;
 }
 
 function submitForm() {
@@ -40,9 +40,8 @@ function submitForm() {
     while (j >= 0) {
         //console.log("comparing: " + listCodes[j] + " and " + tex);
         if (listCodes[j] !== tex) {
-            let data = getData(tex, listCodes[j], dat);
-            console.log(data);
-            appendPre(listCodes[j], dat, data[0], data[1], data[2]);
+            getData(tex, listCodes[j], dat);
+
         }
         j--;
     }
